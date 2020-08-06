@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import {getStoreItemArray} from '../reducers';
 import CartItem from './CartItem';
+import StoreItem from './StoreItem';
 
 const Cart = () => {
   const state = useSelector((state) => state);
@@ -10,10 +11,12 @@ const Cart = () => {
   return (
     <Sidebar>
       <h2>Your Cart</h2>
-      <span>1 item</span>
+      <span>Items</span>
     {storeItems.map((item) => {
         return <CartItem item={item}/>
     })}
+    <TotalPrice>Total: {StoreItem}</TotalPrice>
+    <Purchase>Purchase</Purchase>
     </Sidebar>
   );
 };
@@ -27,5 +30,19 @@ const Sidebar = styled.div`
   padding: 2rem;
 `;
 
+const Purchase = styled.button`
+  height: 40px;
+  width: 120px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: red;
+  border-radius: 10px;
+  border: none;
+`;
+
+const TotalPrice = styled.span`
+
+`
 
 export default Cart;
